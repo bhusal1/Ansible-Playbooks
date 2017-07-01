@@ -1,0 +1,12 @@
+---
+- hosts: test-servers
+  tasks:
+  - name: install httpd
+    yum: pkg=httpd state=installed
+
+    notify:
+     - start httpd
+
+  handlers:
+   - name: start httpd
+     service: name=httpd state=started
